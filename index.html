@@ -50,7 +50,7 @@
                       * populate the rows with the code and name of each listing
                       * include a way to remove individual listings
                 -->
-              <tr ng-repeat="entries in listings | filter:filter as results" ng-click="showDetails($index)">
+              <tr ng-repeat="entries in listings | filter:filter as results" ng-click="showDetails($index)" ng-init="initValues()">
                 <td>
                     {{entries.code}}
                 </td>

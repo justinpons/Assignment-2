@@ -3,7 +3,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.listings = Listings;
     $scope.detailedInfo = undefined;
     $scope.showEdit = false;
-      $scope.showAdd = false;
+    $scope.showAdd = false;
     $scope.newListing = {}
 
     /* 
@@ -19,7 +19,15 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.deleteListing = function(index) {
       $scope.listings.splice(index, 1);
     };
-      
+    
+    $scope.initValues = function() {
+      $scope.name = "University of Florida";
+      $scope.code = "UF";
+      $scope.latitude = "82.34944 W";
+      $scope.longitude = "29.64833 N";
+      $scope.address = "Gainesville, FL 32611";
+    }
+
     $scope.showDetails = function(index) {
       $scope.name = $scope.listings[index].name;
       $scope.code = $scope.listings[index].code;
