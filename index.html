@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body ng-app="directoryApp" class="backgroundImg">
+      <div class="pageTitle">
+        <h1>UF Directory App</h1>
+      </div>
+      
     <div class="container">
       
       <div class="header">
@@ -15,12 +19,9 @@
         </div>
       </div>
 
-      <div class="row" style="margin-top: 125px">
-        <h1>UF Directory App</h1>
-      </div>
-      <div class="row" ng-controller="ListingsController">
+      <div class="row" ng-controller="ListingsController" style="margin-top:125px">
         <div class="col-md-6">
-          <div class="panel panel-default">
+          <div class="panel panel-default card">
           <div class="input-group" id="searchBar">
             <!-- 
 
@@ -70,12 +71,46 @@
 
               Write an HTML form that adds new listings to the directory 
 
-            -->
+            -->   
         </div>
+            <div class="listingForm card">
+                <form name="newListingForm" ng-submit="addListing()">
+                    <ul class="listingFormList">
+                        <li>
+                            <label>Name</label>
+                            <input ng-model="newListing.name" type="text" required/>
+                        </li>
+                        
+                        <li>
+                            <label>Code</label>
+                            <input ng-model="newListing.code" type="text" required/>
+                        </li>
+                        
+                        <li>
+                            <label>Latitude</label>
+                            <input ng-model="newListing.coordinates.latitude" type="text"/>
+                        </li>
+                        
+                        <li>
+                            <label>Longitude</label>
+                            <input ng-model="newListing.coordinates.longitude" type="text"/>
+                        </li>
+                        
+                        <li>
+                            <label>Address</label>
+                            <input ng-model="newListing.address" type="text"/>
+                        </li>
+                        
+                        <li>
+                            <input type="submit" value="Submit"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
         </div>
         <div class="col-md-6">
-          <div class="jumbotron" ng-app="listings" ng-controller="ListingsController">
-            <h2>Detailed Information</h2>
+          <div class="details card" ng-app="listings" ng-controller="ListingsController">
+            <center><h4>Detailed Information</h4></center>
             <!-- 
 
               Include a way to display detailed information about an individual listing:
@@ -83,13 +118,12 @@
 
              -->
 
-            <h3>{{name}} ({{code}})</h3>
+            <h3>Name: {{name}} ({{code}})</h3>
             <h5>Coordinates: ({{latitude}}, {{longitude}})</h5>
-            <p></p>
             <p>Address: {{address}}</p>
 
           </div>
-           <img src="campuslife_8.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="auto">
+           <img src="campuslife_8.jpg" class="img-rounded card" alt="Cinque Terre" width="100%" height="auto">
         </div>
       </div>
     </div>
