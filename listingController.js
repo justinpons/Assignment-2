@@ -3,6 +3,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.listings = Listings;
     $scope.detailedInfo = undefined;
     $scope.showEdit = false;
+      $scope.showAdd = false;
     $scope.newListing = {}
 
     /* 
@@ -12,6 +13,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.addListing = function() {
       $scope.listings.push($scope.newListing);
       $scope.newListing = {};
+      $scope.toggleAdd();
     };
       
     $scope.deleteListing = function(index) {
@@ -31,6 +33,14 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         $scope.showEdit = false;
       } else {
         $scope.showEdit = true;
+      }
+    };
+      
+      $scope.toggleAdd = function() {
+      if ($scope.showAdd) {
+        $scope.showAdd = false;
+      } else {
+        $scope.showAdd = true;
       }
     };
   }

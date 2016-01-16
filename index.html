@@ -6,7 +6,7 @@
   </head>
   <body ng-app="directoryApp" class="backgroundImg">
       <div class="pageTitle">
-        <h1>UF Directory App</h1>
+        <h1>Building Directory</h1>
       </div>
       
     <div class="container">
@@ -20,6 +20,7 @@
       </div>
 
       <div class="row" ng-controller="ListingsController" style="margin-top:125px">
+          <div class="listingFormBackground" ng-show="showAdd" ng-click="toggleAdd()"></div>
         <div class="col-md-6">
           <div class="panel panel-default card">
           <div class="input-group" id="searchBar">
@@ -37,7 +38,8 @@
               <tr>
                 <th><h3>Code</h3></th>
                 <th><h3>Building Name</h3></th>
-                <td style="vertical-align:middle">
+                  <th><button type="button addButton" ng-click="toggleAdd()" class="btn btn-primary"><small>&nbsp;Add&nbsp;</small></button></th>
+                <td>
                     <button type="button" ng-if="!showEdit" ng-click="toggleEdit()" class="btn btn-primary"><small>&nbsp;Edit&nbsp;</small></button>
                     <button type="button" ng-if="showEdit" ng-click="toggleEdit()" class="btn btn-success"><small>&nbsp;Done&nbsp;</small></button>
                 </td>
@@ -73,38 +75,34 @@
 
             -->   
         </div>
-            <div class="listingForm card">
+            <div class="listingForm" ng-show="showAdd">
+                <center><h3>Add New Listing</h3></center>
                 <form name="newListingForm" ng-submit="addListing()">
                     <ul class="listingFormList">
                         <li>
-                            <label>Name</label>
-                            <input ng-model="newListing.name" type="text" required/>
+                            <input placeholder="Name (Required)" ng-model="newListing.name" type="text" required/>
                         </li>
-                        
+
                         <li>
-                            <label>Code</label>
-                            <input ng-model="newListing.code" type="text" required/>
+                            <input placeholder="Code (Required)" ng-model="newListing.code" type="text" required/>
                         </li>
-                        
+
                         <li>
-                            <label>Latitude</label>
-                            <input ng-model="newListing.coordinates.latitude" type="text"/>
+                            <input placeholder="Latitude" ng-model="newListing.coordinates.latitude" type="text"/>
                         </li>
-                        
+
                         <li>
-                            <label>Longitude</label>
-                            <input ng-model="newListing.coordinates.longitude" type="text"/>
+                            <input placeholder="Longitude" ng-model="newListing.coordinates.longitude" type="text"/>
                         </li>
-                        
+
                         <li>
-                            <label>Address</label>
-                            <input ng-model="newListing.address" type="text"/>
-                        </li>
-                        
-                        <li>
-                            <input type="submit" value="Submit"/>
+                            <input placeholder="Address" ng-model="newListing.address" type="text"/>
                         </li>
                     </ul>
+                    <div>
+                        <input class="formSubmit" type="submit" value="Submit"/>
+                    </div>
+                    
                 </form>
             </div>
         </div>
